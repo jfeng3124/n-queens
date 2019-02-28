@@ -81,11 +81,17 @@
     hasRowConflictAt: function (rowIndex) {
       // Get rowIndex with hasAnyRowConflicts function
       var row = this.get(rowIndex);
-      // reduce the sum of the row
-      var sum = row.reduce((acc, num) => acc + num, 0);
-      //if sum is greater than 1
-      if (sum > 1) {
-        //return true
+      // Create variable count at 0
+      var count = 0;
+      // Iterate through rowIndex
+      for (var i = 0; i < row.length; i++) {
+        // If 1 exists add to count variable
+        if (row[i] === 1) {
+          count++;
+        }
+      }
+      // Return if count is greater than
+      if (count > 1) {
         return true;
       }
       //else return false
@@ -96,13 +102,11 @@
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function () {
       // Get whole board
-      var board = this.attributes;
-      console.log('here');
+      var board = this.get('n');
       // Iterate through board
-      for (var i = 0; i < board.length; i++) {
+      for (var i = 0; i < board; i++) {
         // If hasRowConflictAt at the index of board is true
-        if (hasRowConflictAt(i)) {
-          console.log(hasRowConflictAt(i))
+        if (this.hasRowConflictAt(i)) {
           // Return true
           return true;
         }
