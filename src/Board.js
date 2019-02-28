@@ -91,11 +91,7 @@
         }
       }
       // Return if count is greater than
-      if (count > 1) {
-        return true;
-      }
-      //else return false
-      return false;
+      return count > 1;
     },
 
 
@@ -122,11 +118,34 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function (colIndex) {
-      return false; // fixme
+      // Create a new variable to get board matrix
+      var board = this.get('n');
+      // Create variable counter
+      var count = 0;
+      // Iterate through board
+      for (var i = 0; i < board; i++) {
+        // Create variable to store row at index
+        var row = this.get(i);
+        // Increase counter by row[colidx]
+        count += row[colIndex];
+      }
+      // If count > 1
+      return count > 1;
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function () {
+      // Create a new variable to get board matrix
+      var board = this.get('n');
+      // Iterate through the board row
+      for (var i = 0; i < board; i++) {
+        // If hasColConflictAt returns true from row
+        if (this.hasColConflictAt(i)) {
+          // Return true
+          return true;
+        }
+      }
+      // Else return false
       return false; // fixme
     },
 
