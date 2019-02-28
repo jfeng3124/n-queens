@@ -199,12 +199,42 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function (minorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      debugger;
+      // Create variable for whole board
+      var board = this.attributes;
+      // Create variable for boardSize
+      var boardSize = this.get('n');
+      // Create variable for counter
+      var counter = 0;
+      // Iterate through the boardSize
+      for (var i = 0; i < boardSize; i++) {
+        // If whole board row at minor index is 1
+        if (board[i][minorDiagonalColumnIndexAtFirstRow] === 1) {
+          // Increase counter
+          counter++;
+        }
+        // Decrease minor index
+        minorDiagonalColumnIndexAtFirstRow--;
+      }
+      // If counter is great than 1 return true;
+      return counter > 1;
     },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function () {
-      return false; // fixme
+      debugger;
+      // Create variable for boardSize
+      var boardSize = this.get('n');
+      // Iterate through boardSize starting at 0 ending at boardSize - 1
+      for (var i = 0; i < boardSize + (boardSize - 1); i++) {
+        // If minor diagonal has conflict at boardSize
+        if (this.hasMinorDiagonalConflictAt(i)) {
+          // Return true
+          return true;
+        }
+      }
+      // Else return false
+      return false;
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
