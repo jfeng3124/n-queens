@@ -79,10 +79,10 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function (rowIndex) {
-      //reduce the sum of the row
-      //debugger;
-      // rowIndex = this.get(3);
-      var sum = rowIndex.reduce((acc, num) => acc + num, 0);
+      // Get rowIndex with hasAnyRowConflicts function
+      var row = this.get(rowIndex);
+      // reduce the sum of the row
+      var sum = row.reduce((acc, num) => acc + num, 0);
       //if sum is greater than 1
       if (sum > 1) {
         //return true
@@ -95,13 +95,20 @@
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function () {
-      //get first row index
-      debugger;
-      var rowIndex = this.get(3);
-      // console.log(rowIndex)
-      //return hasRowConflictAt on rowIndex
-      hasRowConflictAt(rowIndex);
-
+      // Get whole board
+      var board = this.attributes;
+      console.log('here');
+      // Iterate through board
+      for (var i = 0; i < board.length; i++) {
+        // If hasRowConflictAt at the index of board is true
+        if (hasRowConflictAt(i)) {
+          console.log(hasRowConflictAt(i))
+          // Return true
+          return true;
+        }
+      }
+      // Else return false
+      return false;
     },
 
 
