@@ -81,27 +81,27 @@
     hasRowConflictAt: function (rowIndex) {
       // Get rowIndex with hasAnyRowConflicts function
       var row = this.get(rowIndex);
-      // Create variable count at 0
-      var count = 0;
+      // Create variable counter at 0
+      var counter = 0;
       // Iterate through rowIndex
       for (var i = 0; i < row.length; i++) {
-        // If 1 exists add to count variable
+        // If 1 exists add to counter variable
         if (row[i] === 1) {
-          count++;
+          counter++;
         }
       }
-      // Return if count is greater than
-      return count > 1;
+      // Return if counter is greater than
+      return counter > 1;
     },
 
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function () {
-      // Get whole board
-      var board = this.get('n');
-      // Iterate through board
-      for (var i = 0; i < board; i++) {
-        // If hasRowConflictAt at the index of board is true
+      // Get whole boardSize
+      var boardSize = this.get('n');
+      // Iterate through boardSize
+      for (var i = 0; i < boardSize; i++) {
+        // If hasRowConflictAt at the index of boardSize is true
         if (this.hasRowConflictAt(i)) {
           // Return true
           return true;
@@ -116,29 +116,29 @@
     // COLUMNS - run from top to bottom
     // --------------------------------------------------------------
     //
-    // test if a specific column on this board contains a conflict
+    // test if a specific column on this boardSize contains a conflict
     hasColConflictAt: function (colIndex) {
-      // Create a new variable to get board matrix
-      var board = this.get('n');
+      // Create a new variable to get boardSize matrix
+      var boardSize = this.get('n');
       // Create variable counter
-      var count = 0;
-      // Iterate through board
-      for (var i = 0; i < board; i++) {
+      var counter = 0;
+      // Iterate through boardSize
+      for (var i = 0; i < boardSize; i++) {
         // Create variable to store row at index
         var row = this.get(i);
         // Increase counter by row[colidx]
-        count += row[colIndex];
+        counter += row[colIndex];
       }
-      // If count > 1
-      return count > 1;
+      // If counter > 1
+      return counter > 1;
     },
 
-    // test if any columns on this board contain conflicts
+    // test if any columns on this boardSize contain conflicts
     hasAnyColConflicts: function () {
-      // Create a new variable to get board matrix
-      var board = this.get('n');
-      // Iterate through the board row
-      for (var i = 0; i < board; i++) {
+      // Create a new variable to get boardSize matrix
+      var boardSize = this.get('n');
+      // Iterate through the boardSize row
+      for (var i = 0; i < boardSize; i++) {
         // If hasColConflictAt returns true from row
         if (this.hasColConflictAt(i)) {
           // Return true
@@ -199,7 +199,6 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function (minorDiagonalColumnIndexAtFirstRow) {
-      debugger;
       // Create variable for whole board
       var board = this.attributes;
       // Create variable for boardSize
@@ -222,7 +221,6 @@
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function () {
-      debugger;
       // Create variable for boardSize
       var boardSize = this.get('n');
       // Iterate through boardSize starting at 0 ending at boardSize - 1
